@@ -9,7 +9,7 @@ import {FaAngleDown} from 'react-icons/fa'
 import profilePicture from '../assets/profilePic.jfif'
 import placeholderPicture from '../assets/background.jpg'
 import Divider from '@material-ui/core/Divider'
-import Link from '@material-ui/core/Link'
+import { Link } from 'react-router-dom';
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Box from '@material-ui/core/Box'
 import axios from 'axios'
