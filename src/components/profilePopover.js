@@ -216,10 +216,10 @@ export default function ProfilePopover() {
             <div className={classes.name}>Smart Egbuchulem</div>
             <Divider className={classes.divider} />         
               <Button><Link to='/' className={classes.popoverLink}><div className={classes.popoverBtnItem} key="1">My Profile</div></Link></Button> 
-              <Button><Link to='' className={classes.popoverLink}><div className={classes.popoverBtnItem} key="2">My Account</div></Link></Button>
-              <Button><Link to='' className={classes.popoverLink}><div className={classes.popoverBtnItem} key="3">Bank Details</div></Link></Button>   
+              <Button><Link to='/' className={classes.popoverLink}><div className={classes.popoverBtnItem} key="2">My Account</div></Link></Button>
+              <Button><Link to='/' className={classes.popoverLink}><div className={classes.popoverBtnItem} key="3">Bank Details</div></Link></Button>   
             <Divider className={classes.divider} />    
-          </> : <Link to='/createuser' className={classes.popoverLink}>
+          </> : <Link to = '/createuser' className={classes.popoverLink}>
               <Button  className={classes.popoverBtnItem2} >create user Profile</Button>
             </Link> 
           }
