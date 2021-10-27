@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme) =>({
 const ComfirmEmail = ()=>{
     const classes = useStyles()
 
-    if(!document.referrer.includes('/signup')){
-        return <Redirect to= '/'/>
-    }
+//     if(!document.referrer.includes('/signup')){
+//         return <Redirect to= '/'/>
+//     }
 
     return<div>
         <Header />
