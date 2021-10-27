@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme)=>({
         alignItems:"center",
     },
     popover:{
-        background:"red",
         cursor : "pointer",
         width:"2.7rem", 
         height:"2.7rem", 
