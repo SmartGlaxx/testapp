@@ -1,5 +1,6 @@
 import {HeroButton, DashboardButton, AuthButton, LoginSignupBtn} from "./buttons"
 import Header from "./header"
+import Footer from "./footer"
 import DashboardHeader from "./dashboardHeader"
 import Hero from './hero'
 import {InvestorSidebarMobile} from './investorSidebar'
@@ -10,5 +11,5 @@ import ProfilePopover from "./profilePopover"
 
 import Packages from './packages'
 
-export {Hero, HeroButton, DashboardButton, AuthButton, LoginSignupBtn, Header,  DashboardHeader, InvestorSidebarMobile, 
+export {Hero, HeroButton, DashboardButton, AuthButton, LoginSignupBtn, Header, Footer,  DashboardHeader, InvestorSidebarMobile, 
     InvestorSidebar, Sidebar, SidebarMobile, Packages, ProfilePopover}

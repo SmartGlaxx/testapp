@@ -113,15 +113,15 @@ const Header = ()=>{
         <Overlay />
         <Grid container className={classes.main}>
             <Grid item xs={8} sm={4} md={3} className={classes.logo}> 
-                Invest App
+                Smart Invest
             </Grid>
             <Grid item xs={4} sm={8} md={9} className={classes.menuBtnBox}> 
                 <ul className={classes.menuNavItems}>
                 <Link to='/about' className={classes.menulinks}>
                     <li className={classes.menuItems}>About</li>
                 </Link>
-                <Link to='/services' className={classes.menulinks}>
-                    <li className={classes.menuItems}>Services</li>
+                <Link to='/products' className={classes.menulinks}>
+                    <li className={classes.menuItems}>Products</li>
                 </Link>
                 <Link to='/contact' className={classes.menulinks}>
                     <li className={classes.menuItems}>Contact</li>

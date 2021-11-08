@@ -3,17 +3,16 @@ import './App.css';
 // import Header from './components/header'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import {LandingPage, Signup, Login, ComfirmEmail, ForgotPassword, ErrorPage, CreateInvestment, Investments,
-  CreateUser, UserProfile, Invest } from './pages';
+  CreateUser, UserProfile, Invest, VerifyPhone } from './pages';
 import DashboardHome from './pages/Dashboards/dashboardHome';
 import Overlay from './pages/UtilPages/overlay';
-// import {Sidebar, SidebarMobile} from './components/';
+import {Footer} from './components/';
 // import {InvestorSidebar, InvestorSidebarMobile} from './components';
 //import AuthWrapper from './pages/UtilPages/authWrapper'
 import { UseContext } from './contexts.js/context';
 
 
 function App() {
-  const {authenticated} = UseContext()
   return (
     <BrowserRouter>
     <Overlay />
@@ -51,12 +50,16 @@ function App() {
         <Route path='/users/:userId/:username' exact>
           <UserProfile />
         </Route>
+        <Route path='/verifyPhone' exact>
+          <VerifyPhone />
+        </Route>
         
 
         <Route path='*' exact>
           <ErrorPage />
         </Route>
     </Switch>
+    <Footer />
     </BrowserRouter>
   );
 

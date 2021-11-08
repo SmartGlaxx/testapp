@@ -304,7 +304,7 @@ export const InvestorSidebarMobile = ()=>{
     return(<div >
         {menuState && <div className={classes.mainMobile} >
             <div ><FaChevronLeft onClick={setMenu} className={classes.closeBtnMobile}/></div>
-        <div className={classes.sideBarTitleMobile}>Invest App</div>
+        <div className={classes.sideBarTitleMobile}>Smart Invest</div>
         <div className={classes.containerMobile}>
         {InvestorNavLinks.map((item, i) =>{
             const {id, name, icon, link} = item

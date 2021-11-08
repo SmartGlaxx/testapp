@@ -1,3 +1,17 @@
+:root:{
+  --backgound-color-1: #fff;
+  --backgound-color-2 : #a5c3cf;
+
+
+  --text-color-1 : #16253d;
+  --text-color-2 : #002c54;
+
+
+  --button-color: ;
+  --button-backround: ;
+}
+
+
 .App {
   text-align: center;
 }
@@ -6,6 +20,23 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+
+
+
+/* sidebar */
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

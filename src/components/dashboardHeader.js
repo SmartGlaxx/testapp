@@ -11,8 +11,7 @@ import { ProfilePopover } from '.'
 
 const useStyles = makeStyles((theme) => ({
     main:{
-        background:"#667ce7",
-        background:"#556bd6",
+        background : "#002c54",
         //background:"linear-gradient(to right, #667ce7, #754fa7)",
         color:"#fff",
         fontSize : "2rem",
@@ -119,8 +118,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 const DashboardHeader = ()=>{
-    const {setAuthenticated, authenticated, setMenuState, menuState, setOverlayState, overlayState, setUserCreated,
-        loginDetail, setUserDetail, userDetail, setUserFullData, userFullData} = UseContext()
+    const {setAuthenticated, authenticated, setMenuState, menuState, setOverlayState, overlayState, loginDetail, 
+        setUserCreated, setUserDetail, setUserFullData, userDetail, userFullData} = UseContext()
     const classes = useStyles()
     const url = 'https://investmentapp10.herokuapp.com/api/v1/users'
     const openMenu =()=>{
@@ -128,25 +127,25 @@ const DashboardHeader = ()=>{
         setOverlayState(overlayState)
     }
 
-    const fetchCreatedUsers=async(url)=>{
-        await axios.get(url)
-       .then(res =>{
-        const usersCreated =  res.data.usersData
-        usersCreated.filter(user =>{
-          if(user.email === loginDetail || user.username === loginDetail){
-            setUserCreated(true)
-            setUserDetail(loginDetail)
-            setUserFullData(user)
-          }else{            
-            setUserCreated(false)
-          }
-        })
+    // const fetchCreatedUsers=async(url)=>{
+    //     await axios.get(url)
+    //    .then(res =>{
+    //     const usersCreated =  res.data.usersData
+    //     usersCreated.filter(user =>{
+    //       if(user.email === loginDetail || user.username === loginDetail){
+    //         setUserCreated(true)
+    //         setUserDetail(loginDetail)
+    //         setUserFullData(user)
+    //       }else{            
+    //         setUserCreated(false)
+    //       }
+    //     })
         
-      })
-      }
-      useEffect(()=>{
-        fetchCreatedUsers(url) 
-      },[])
+    //   })
+    //   }
+    //   useEffect(()=>{
+    //     fetchCreatedUsers(url) 
+    //   },[authenticated, loginDetail])
      
     
     return (<>
@@ -154,7 +153,7 @@ const DashboardHeader = ()=>{
         <Grid container className={classes.main}>
             <Grid item xs={8} sm={4} className={menuState ? classes.logo : classes.logoCollapsed}> 
             {/* <Grid item xs={8} sm={4} md={3} className={classes.logo}>  */}
-                <h4>Invest App</h4>
+                <h4>Smart Invest</h4>
             </Grid>
             <Grid item xs={4} sm={8} className={classes.mwnuBtnBox}> 
                 <div className={classes.authBtnBox1}>
@@ -164,7 +163,7 @@ const DashboardHeader = ()=>{
                  {authenticated ? <ProfilePopover /> :
                 <>
                     <Link className={classes.menulinks} to={'/login'}><Button className={classes.authBtn}>Login</Button></Link>
-                    <Link className={classes.menulinks} to={'/login'}><Button className={classes.authBtn}>Register</Button></Link>
+                    <Link className={classes.menulinks} to={'/signup'}><Button className={classes.authBtn}>Register</Button></Link>
                 </>
                 }       
                 </div>

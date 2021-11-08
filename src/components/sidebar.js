@@ -3,8 +3,19 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { UseContext } from "../contexts.js/context"
 import { NavLinks} from "../utils/utilLinks"
-import {FaWindowClose, FaChevronLeft} from 'react-icons/fa';
+import {FaWindowClose, FaChevronLeft, FaTh} from 'react-icons/fa';
+import { useHistory } from "react-router-dom";
+import styled from 'styled-components'
 
+
+const Container = styled.div`
+    .closeBtnMobile{
+        float: right;
+        margin-top: 0.2rem;
+        font-size: 1.2rem;
+        color: var(--text-color-2);
+    }
+`
 const useStyles = makeStyles((theme) => ({
     main:{
         background:"linear-gradient(to right, #667ce7, #754fa7)",
@@ -147,21 +158,23 @@ const useStyles = makeStyles((theme) => ({
         borderRadius:"0 2rem 2rem 0",
         
     },
-    closeBtnMobile:{
-        float: "right",
-        fontSize: "2rem"
-    },
+    // closeBtnMobile:{
+    //     float: "right",
+    //     marginTop:"0.2rem",
+    //     fontSize: "1.2rem",
+    //     color:"#f55"
+    // },
     sideBarTitleMobile:{
         color : "#212121",
-        fontSize :"1.3rem",
-        fontWeight: "600",
+        fontSize :"1.1rem",
+        fontWeight: "500",
         textAlign: "center"
     },
     authBtnMobile:{
         float : "right",
         color:"#000",
         fontWeight: "500",
-        fontSize:"0.7rem"
+        fontSize:"0.6rem"
     },
     containerMobile:{
         paddingTop:"2rem", 
@@ -171,6 +184,9 @@ const useStyles = makeStyles((theme) => ({
         width:"100%",
         textAlign:"left",
         marginLeft:"0.8rem"
+    },
+    icon:{
+        width: "0.5rem"
     }
 }))
 
@@ -180,21 +196,31 @@ const useStyles = makeStyles((theme) => ({
 
 export const Sidebar = ()=>{
     const classes = useStyles()
-    const {setAuthenticated, authenticated, setOverlayState, overlayState, setMenuState, menuState} = UseContext()
+    const {setAuthenticated, authenticated, setOverlayState, overlayState, setLoginDetail, setMenuState, 
+        menuState, setInvestments } = UseContext()
     const [clickedBtnIndex,setClickedBtnIndex] = useState()
-    
+    const history = useHistory()
+
+
     const setIndex = (value)=>{
         setClickedBtnIndex(value)
+
     }
     
     const setMenu =()=>{
         setMenuState(menuState)
         setOverlayState(overlayState)
     }
+    const setLoginValues =(status, detail)=>{
+        setAuthenticated(status)
+        setLoginDetail(detail)
+        setInvestments("", false)
+        history.push('/')
+    }
     return(<div >
         <div className={classes.main} >
             <div ><FaChevronLeft onClick={setMenu} className={classes.closeBtn}/></div>
-        <Link to='/' className={classes.titleLink}><div className={classes.sideBarTitle}>Invest App</div></Link>
+        <Link to='/' className={classes.titleLink}><div className={classes.sideBarTitle}>Smart Invest</div></Link>
         <div className={classes.container}>
         {NavLinks.map((item, i) =>{
             const {id, name, icon, link} = item
@@ -208,7 +234,7 @@ export const Sidebar = ()=>{
         })}
         </div>
          {authenticated ? 
-        <Button onClick={()=>setAuthenticated(false)} className={classes.authBtn}>Logout</Button> :
+        <Button onClick={()=>setLoginValues(false, '')} className={classes.authBtn}>Logout</Button> :
         <>
             <Link to={'../login'}><Button className={classes.authBtn}>Login</Button></Link>
             <Link to={'../login'}><Button className={classes.authBtn}>Register</Button></Link>
@@ -225,21 +251,31 @@ export const Sidebar = ()=>{
 //Mobile
 export const SidebarMobile = ()=>{
     const classes = useStyles()
-    const {setAuthenticated, authenticated, setOverlayState, overlayState, setMenuState, menuState} = UseContext()
+    const {setAuthenticated, authenticated, setOverlayState, overlayState, setLoginDetail, setMenuState, 
+        menuState, setInvestments } = UseContext()
     const [clickedBtnIndex,setClickedBtnIndex] = useState()
+    const history = useHistory()
+
     
     const setIndex = (value)=>{
         setClickedBtnIndex(value)
+        setMenuState(menuState)
     }
     
     const setMenu =()=>{
         setMenuState(menuState)
         setOverlayState(overlayState)
     }
-    return(<div >
+    const setLoginValues =(status, detail)=>{
+        setAuthenticated(status)
+        setLoginDetail(detail)
+        setInvestments("", false)
+        history.push('/')
+    }
+    return(<Container >
         {menuState && <div className={classes.mainMobile} >
-            <div ><FaChevronLeft onClick={setMenu} className={classes.closeBtnMobile}/></div>
-        <div className={classes.sideBarTitleMobile}>Invest App</div>
+            <div ><FaChevronLeft onClick={setMenu} className="closeBtnMobile"/></div>
+        <div className={classes.sideBarTitleMobile}>Smart Invest</div>
         <div className={classes.containerMobile}>
         {NavLinks.map((item, i) =>{
             const {id, name, icon, link} = item
@@ -253,20 +289,21 @@ export const SidebarMobile = ()=>{
         })}
         {authenticated &&
         <Link to='/dashboard' className={classes.navLink}>
-            <Button className={classes.classoneMobile}>
-            <span>icon</span><div className={classes.nameMobile}>My Dashboard</div></Button>
+            {/* <Button className={classes.classoneMobile}> */}
+            <Button className={ classes.classoneMobile}>
+            <span className={ classes.icon}><FaTh /></span><div className={classes.nameMobile}>My Dashboard</div></Button>
         </Link>
         }
         </div>
         <Divider />
          {authenticated ? 
-        <Button onClick={()=>setAuthenticated(false)} className={classes.authBtnMobile}>Logout</Button> :
+        <Button onClick={()=>setLoginValues(false, '')} className={classes.authBtnMobile}>Logout</Button> :
         <>
             <Link to={'../login'}><Button className={classes.authBtnMobile} onClick={setMenu} >Login</Button></Link>
-            <Link to={'../login'}><Button className={classes.authBtnMobile} onClick={setMenu} >Register</Button></Link>
+            <Link to={'../signup'}><Button className={classes.authBtnMobile} onClick={setMenu} >Register</Button></Link>
         </>
         }
         </div>}
         
-    </div>)
+    </Container>)
 }
